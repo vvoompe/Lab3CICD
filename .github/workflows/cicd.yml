@@ -1,0 +1,29 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Завантаження коду з репозиторію
+        uses: actions/checkout@v4
+
+      - name: Налаштування Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Збірка та запуск Docker контейнерів
+        run: docker compose up -d --build
+
+      - name: Запуск модульних тестів Django
+        run: docker compose exec -T web python manage.py test
+
+      - name: Зупинка контейнерів
+        if: always()
+        run: docker compose down
