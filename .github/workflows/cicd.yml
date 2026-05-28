@@ -6,7 +6,6 @@ on:
   pull_request:
     branches: [ "main", "master" ]
 
-# КРИТИЧНО: Надаємо права на запис для автоматичного злиття гілок
 permissions:
   contents: write
 
@@ -49,7 +48,7 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
-          usedocker: true # Використовуємо Docker, оскільки у нас є Dockerfile
+          usedocker: true
 
   merge-to-master:
     name: Auto Merge to Master
@@ -61,7 +60,7 @@ jobs:
       - name: Завантаження коду
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Завантажуємо всю історію для коректного мержу
+          fetch-depth: 0 # Потрібно для отримання всієї історії гілок
 
       - name: Merge ivan-workflow into main
         uses: devmasx/merge-branch@master
