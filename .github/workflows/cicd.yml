@@ -12,7 +12,7 @@ permissions:
 jobs:
   build:
     name: Build and Test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Завантаження коду з репозиторію
@@ -34,7 +34,7 @@ jobs:
 
   deploy:
     name: Deploy to Heroku
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: build
     # Деплой запускається тільки якщо тести пройшли успішно І код знаходиться в головній гілці
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
@@ -51,7 +51,7 @@ jobs:
 
   merge-to-master:
     name: Auto Merge to Master
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: build
 
     if: github.ref == 'refs/heads/ivan-workflow' && github.event_name == 'push'
