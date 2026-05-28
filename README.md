@@ -1,5 +1,7 @@
 # Інформаційна система "Ресторан" 🍔
 
+[![CI/CD Pipeline](https://github.com/vvoompe/Lab3CICD/actions/workflows/cicd.yml/badge.svg)](https://github.com/vvoompe/Lab3CICD/actions/workflows/cicd.yml)
+
 Веб-застосунок для керування меню та бронюваннями ресторану, розроблений на базі фреймворку **Django**. Проєкт реалізовано як частину лабораторної роботи з дисципліни "Неперервна інтеграція та розгортання ПЗ".
 
 ## 🛠 Технології та інструменти
